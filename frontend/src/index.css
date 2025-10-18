@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 /* Fallback styles if Tailwind isn't available (keeps layout working) */
 .cards-map-container { display: flex; flex-direction: column; gap: 1.5rem; }
 @media (min-width: 768px) {

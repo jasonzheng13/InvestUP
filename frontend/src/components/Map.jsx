@@ -1,25 +1,41 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
+import L from 'leaflet';
 
-function Map({ selectedProperty }) {
-  return (
-    <div className="h-[600px] rounded-3xl overflow-hidden shadow-lg bg-white">
-      {/* Map placeholder - replace with real map (Leaflet/Mapbox) later */}
-      <div className="w-full h-full flex items-center justify-center text-gray-500">
-        {selectedProperty ? (
-          <div className="text-center">
-            <p className="font-semibold text-gray-800">Map focused on:</p>
-            <p className="mt-2 font-bold">{selectedProperty.address}</p>
-            <p className="text-sm text-gray-600">{selectedProperty.city}, {selectedProperty.state}</p>
-          </div>
-        ) : (
-          <div className="text-center">
-            <p className="font-semibold text-gray-800">Map Placeholder</p>
-            <p className="text-sm text-gray-600">Add a map (Leaflet/Mapbox/Google) here</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+function Map() {
+  const mapRef = useRef(null);
+  const mapInstanceRef = useRef(null);
+
+  useEffect(() => {
+    // Only initialize the map once
+    if (mapInstanceRef.current) return;
+
+    // Initialize the map
+    const map = L.map(mapRef.current).setView([51.505, -0.09], 13);
+
+    // Add the tile layer (the actual map images)
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Add a marker
+    L.marker([51.5, -0.09]).addTo(map)
+      .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+      .openPopup();
+
+    // Store the map instance
+    mapInstanceRef.current = map;
+
+    // Cleanup function
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, []);
+
+  return <div ref={mapRef} style={{ height: '400px', width: '100%' }} />;
 }
 
 export default Map;
