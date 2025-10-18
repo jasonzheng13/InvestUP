@@ -1,3 +1,7 @@
+// Handler retrieves properties based on filters or lists all properties
+// This endpoint is called to fetch all information about property
+// Helps maintain separation of concerns by isolating property-related logic
+
 import { 
   getAllProperties, 
   getPropertyById, 
@@ -27,6 +31,27 @@ export async function getProperty(propertyId) {
   } catch (error) {
     console.error('Failed to get property:', error);
     throw error;
+  }
+}
+
+export async function handleGetProperty(c) {
+  try {
+    const propertyId = c.req.param('id');
+    
+    validatePropertyId(propertyId);
+    
+    const property = await getProperty(propertyId);
+    
+    return c.json(successResponse(property));
+    
+  } catch (error) {
+    console.error('Get property error:', error);
+    
+    if (error.message === 'Property not found') {
+      return c.json(errorResponse(error.message), 404);
+    }
+    
+    return c.json(errorResponse(error.message), 500);
   }
 }
 

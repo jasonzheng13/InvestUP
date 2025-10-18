@@ -375,7 +375,7 @@ export async function calculateFlip(property, params) {
     };
 }
 
-export async function calculateAllStrategies(property, strategy, params) {
+export async function calculateInvestment(property, strategy, params) {
 
     switch(strategy.toLowerCase()) {
         case 'airbnb':
