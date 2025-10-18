@@ -1,0 +1,80 @@
+export const mockProperties = [
+  {
+    id: 1,
+    address: "123 Elegant Manor, Queens, NY 11101",
+    price: 650000,
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: 2400,
+    imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=300&fit=crop",
+    airbnbIncome: 4200,
+    leaseIncome: 3500,
+    flipProfit: "18k",
+    isFavorite: true
+  },
+  {
+    id: 2,
+    address: "456 Luxury Estate, Queens, NY 11102",
+    price: 890000,
+    bedrooms: 5,
+    bathrooms: 4,
+    sqft: 3200,
+    imageUrl: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=400&h=300&fit=crop",
+    airbnbIncome: 5800,
+    leaseIncome: 4800,
+    flipProfit: "25k",
+    isFavorite: false
+  },
+  {
+    id: 3,
+    address: "789 Royal Villa, Queens, NY 11103",
+    price: 720000,
+    bedrooms: 4,
+    bathrooms: 3.5,
+    sqft: 2800,
+    imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop",
+    airbnbIncome: 4600,
+    leaseIncome: 3800,
+    flipProfit: "20k",
+    isFavorite: false
+  },
+  {
+    id: 4,
+    address: "321 Grand Residence, Queens, NY 11104",
+    price: 580000,
+    bedrooms: 3,
+    bathrooms: 2.5,
+    sqft: 2000,
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+    airbnbIncome: 3800,
+    leaseIncome: 3000,
+    flipProfit: "15k",
+    isFavorite: false
+  },
+  {
+    id: 5,
+    address: "654 Executive Home, Queens, NY 11105",
+    price: 950000,
+    bedrooms: 5,
+    bathrooms: 4.5,
+    sqft: 3600,
+    imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop",
+    airbnbIncome: 6200,
+    leaseIncome: 5200,
+    flipProfit: "28k",
+    isFavorite: false
+  },
+  {
+    id: 6,
+    address: "987 Classic Estate, Queens, NY 11106",
+    price: 780000,
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: 2600,
+    imageUrl: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop",
+    airbnbIncome: 5000,
+    leaseIncome: 4100,
+    flipProfit: "22k",
+    isFavorite: false
+  }
+];
