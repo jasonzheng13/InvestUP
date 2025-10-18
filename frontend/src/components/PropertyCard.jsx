@@ -5,7 +5,7 @@ function PropertyCard({ property, onClick }) {
 
   return (
     <div
-      className="relative h-80 rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      className="relative h-80 rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl property-card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => onClick(property)}
@@ -14,28 +14,26 @@ function PropertyCard({ property, onClick }) {
       <img
         src={property.imageUrl}
         alt={property.address}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover property-image"
       />
 
-      {/* Dark Overlay on Hover - Shows Income Info */}
-      {isHovered && (
-        <div className="absolute inset-0 bg-black bg-opacity-75 flex flex-col items-center justify-center text-white p-6 animate-fadeIn">
-          <div className="space-y-3 text-center">
-            <p className="text-lg font-semibold">
-              Airbnb Est. Income: <span className="text-green-400">${property.airbnbIncome}/mo</span>
-            </p>
-            <p className="text-lg font-semibold">
-              Lease Est. Income: <span className="text-green-400">${property.leaseIncome}/mo</span>
-            </p>
-            <p className="text-lg font-semibold">
-              Flip Profit: <span className="text-green-400">${property.flipProfit}</span> (6 months)
-            </p>
-          </div>
-          <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold transition-colors">
-            View Details
-          </button>
+      {/* Dark Overlay on Hover - Shows Income Info (overlay is above image) */}
+  <div className={`absolute inset-0 bg-black bg-opacity-75 z-10 flex flex-col items-center justify-center text-white p-6 transition-opacity duration-300 ${isHovered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="space-y-3 text-center">
+          <p className="text-lg font-semibold">
+            Airbnb Est. Income: <span className="text-green-400">${property.airbnbIncome}/mo</span>
+          </p>
+          <p className="text-lg font-semibold">
+            Lease Est. Income: <span className="text-green-400">${property.leaseIncome}/mo</span>
+          </p>
+          <p className="text-lg font-semibold">
+            Flip Profit: <span className="text-green-400">${property.flipProfit}</span> (6 months)
+          </p>
         </div>
-      )}
+        <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold transition-colors">
+          View Details
+        </button>
+      </div>
 
       {/* Favorite Heart Icon (Top Right) */}
       {/* <div className="absolute top-4 right-4">
