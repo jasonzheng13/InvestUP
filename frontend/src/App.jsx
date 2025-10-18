@@ -6,14 +6,9 @@ import Info from './pages/Info.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/info" element={<Info />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+    <Home />
+    </>
   );
 }
 
