@@ -269,3 +269,123 @@ export async function calculateLease(property, params) {
         },
     };
 }
+
+// STRATEGY 3: FIX AND FLIP
+
+export async function calculateFlip(property, params) {
+    // Extract parameters
+
+    const {
+        purchasePrice = property.price,
+        renovationBudget,
+        afterRepairValue,
+        holdingPeriod = 6, // in months
+        closingCostsBuy = 3,
+        closingCostsSell = 6,
+    } = params;
+
+    // Get market data
+    const marketData = getMarketData(property.city, property.state);
+
+    // Calculate Costs
+    // Buying closing costs
+    const buyingClosingCosts = (closingCostsBuy / 100) * purchasePrice;
+
+    // Selling closing costs
+    const sellingClosingCosts = (closingCostsSell / 100) * afterRepairValue;
+
+    // Monthly Holding Costs
+    const monthlyHoldingCosts = (
+        // Property Tax
+        (purchasePrice * (marketData.property_tax_rate / 100)) / 12 + 
+        // Insurance
+        marketData.insurance_annual / 12 +
+        // utilities
+        200
+    );
+
+    // Total Holding Costs for the period
+    const totalHoldingCosts = monthlyHoldingCosts * holdingPeriod;
+
+    // Total Investment
+    const totalInvestment = purchasePrice + renovationBudget + buyingClosingCosts + totalHoldingCosts;
+
+    // Profit Calculation
+    const grossProfit = afterRepairValue - purchasePrice - renovationBudget - 
+                        buyingClosingCosts - totalHoldingCosts - sellingClosingCosts;
+
+    const netProfit = grossProfit;
+
+    // Calculate ROI
+    const roi = (netProfit / totalInvestment) * 100;
+
+    const annualizedROI = (roi / holdingPeriod) * 12;
+
+    // Profit Margin
+    const profitMargin = (netProfit / afterRepairValue) * 100;
+
+    // Maximum purchase price = (ARV * 0.70) - Renovations
+    // ($500,000 * 0.70) - $50,000 = $300,000
+    const maxPurchasePrice70Rule = (afterRepairValue * 0.70) - renovationBudget;
+    
+    // Does this deal meet the rule?
+    // $385,000 <= $300,000? No
+    const meets70Rule = purchasePrice <= maxPurchasePrice70Rule;
+
+    return {
+        strategy: 'flip',
+        
+        property: {
+        id: property.id,
+        address: property.address,
+        originalPrice: property.price,  // Listing price
+        city: property.city,
+        state: property.state,
+        },
+        
+        inputs: {
+        purchasePrice,
+        renovationBudget,
+        afterRepairValue,
+        holdingPeriod,
+        closingCostsBuy,
+        closingCostsSell,
+        },
+        
+        costBreakdown: {
+        purchasePrice,
+        renovationBudget,
+        buyingClosingCosts: Math.round(buyingClosingCosts * 100) / 100,
+        holdingCosts: Math.round(totalHoldingCosts * 100) / 100,
+        sellingClosingCosts: Math.round(sellingClosingCosts * 100) / 100,
+        totalInvestment: Math.round(totalInvestment * 100) / 100,
+        },
+        
+        results: {
+        afterRepairValue,
+        totalInvestment: Math.round(totalInvestment * 100) / 100,
+        grossProfit: Math.round(grossProfit * 100) / 100,
+        netProfit: Math.round(netProfit * 100) / 100,
+        roi: Math.round(roi * 100) / 100,
+        annualizedROI: Math.round(annualizedROI * 100) / 100,
+        profitMargin: Math.round(profitMargin * 100) / 100,
+        maxPurchasePrice70Rule: Math.round(maxPurchasePrice70Rule * 100) / 100,
+        meets70Rule,
+        },
+    };
+}
+
+export async function calculateAllStrategies(property, strategy, params) {
+
+    switch(strategy.toLowerCase()) {
+        case 'airbnb':
+            return await calculateAirbnb(property, params);
+        case 'lease':
+            return await calculateLease(property, params);
+        case 'flip':
+            return await calculateFlip(property, params);
+        default:
+            throw new Error('Invalid strategy. Choose airbnb, lease, or flip.');
+    }
+}   
+
