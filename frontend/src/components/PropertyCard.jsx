@@ -3,7 +3,7 @@ import { useState } from 'react';
 function PropertyCard({ property, onClick }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  return (
+  return ( 
     <div
       className="relative h-80 rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl property-card"
       onMouseEnter={() => setIsHovered(true)}

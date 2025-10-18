@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 /* Fallback styles if Tailwind isn't available (keeps layout working) */
 .cards-map-container { display: flex; flex-direction: column; gap: 1.5rem; }
 @media (min-width: 768px) {
@@ -13,7 +11,7 @@
 .cards-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; height: 100%; grid-auto-rows: 1fr; }
 @media (min-width: 600px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 600px) { .cards-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); } }
-.property-card { height: 50%; border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; }
+.property-card { height: 100%; border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; }
 .property-card { border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; transform-origin: center center; will-change: transform; }
 /* Make sure grid cells don't reflow when hovered; hovered card will overlap neighbors */
 .cards-grid > * { position: relative; }

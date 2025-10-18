@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "node": "^25.0.0"
+    "framer-motion": "^12.23.24",
+    "node": "^25.0.0",
+    "react-router-dom": "^7.9.4"
   }
 }
