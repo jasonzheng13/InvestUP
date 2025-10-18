@@ -15,12 +15,33 @@ export async function searchProperties(filters = {}) {
     }
 }
 
-export async function getPropertyDetails() {
+export async function getPropertyDetails(propertyId) {
     try {
-        return getAllProperties();
+        const property = getPropertyById(propertyId);
+        if (!property) {
+            throw new Error('Property not found.');
+        }
+
+        return property;
+
     } catch (error) {
         console.error('Error fetching property details:', error);
         throw new Error('Failed to fetch property details.');
     }
 }
+
+export async function listAllProperties() {
+    try {
+        return getAllProperties();
+    } catch (error) {
+        console.error('Error listing all properties:', error);
+        throw new Error('Failed to list properties.');
+    }
+}   
+
+/**
+ * When using real Zillow API
+ * 
+ * Placeholder for future implementation
+ */
 
