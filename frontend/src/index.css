@@ -11,10 +11,10 @@
 .cards-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; height: 100%; grid-auto-rows: 1fr; }
 @media (min-width: 600px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 600px) { .cards-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); } }
-.property-card { height: 100%; border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; }
-.property-card { border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; transform-origin: center center; will-change: transform; }
+/* .property-card { height: 100%; border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; }
+.property-card { border-radius: 1rem; overflow: hidden; position: relative; transition: transform .3s ease, box-shadow .3s ease; transform-origin: center center; will-change: transform; } */
 /* Make sure grid cells don't reflow when hovered; hovered card will overlap neighbors */
-.cards-grid > * { position: relative; }
+/* .cards-grid > * { position: relative; }
 .property-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.12); z-index: 20; }
 .property-image { width: 100%; height: 100%; object-fit: cover; display: block; }
-.map-right > * { height: 100%; }
+.map-right > * { height: 100%; } */
