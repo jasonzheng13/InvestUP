@@ -10,12 +10,21 @@ export default function Welcome() {
       initial={{ opacity: 0.6, y: 12, scale: 1 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: prefersReduced ? 0 : 2, ease }}
-      className="min-h-screen flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center relative"
       style={{ 
         background: "linear-gradient(180deg, #0ea5e9 0%, #38bdf8 40%, #e0f2fe 100%)"
       }}
     >
-      <div className="flex flex-col items-center gap-8">
+      {/* Clouds.png image layer - on top of everything */}
+      <img 
+        src="/Clouds.png" 
+        alt="Clouds" 
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none z-20"
+        style={{ mixBlendMode: 'screen' }}
+      />
+      
+      {/* Content layer */}
+      <div className="flex flex-col items-center gap-8 relative z-30">
         <motion.h1
           className="text-8xl font-bold text-gray-900 tracking-tight"
           initial={{ opacity: 0.4, y: 50, scale: 0.995 }}
