@@ -6,7 +6,7 @@ import Info from './pages/Info.jsx';
 
 function App() {
   return (
-    <Home></Home>
+    <Welcome></Welcome>
   );
 }
 
