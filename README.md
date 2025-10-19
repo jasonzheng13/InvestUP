@@ -1,4 +1,4 @@
-# UP!Investments
+# UP!  Investments
 
 ## Inspiration
 Our inspiration came from exploring new ways to generate income and helping others do the same. Many people want to invest in real estate but don’t know where to start — whether it’s flipping houses, renting, or listing on Airbnb. We built this platform to make property investing and financial awareness more accessible by providing data-driven insights for smarter, more profitable decisions.
@@ -30,3 +30,6 @@ When a user searches for a property, the system:
 - Created a clear, interactive UI for investment analysis  
 - Developed a reliable ROI comparison algorithm  
 - Delivered an MVP that helps users make informed property decisions
+
+  ## Deployable Demo is in branch demo-ready
+  
