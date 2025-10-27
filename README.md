@@ -1,4 +1,4 @@
-# UP!  Investments
+# InvestUP
 
 ## Inspiration
 Our inspiration came from exploring new ways to generate income and helping others do the same. Many people want to invest in real estate but don’t know where to start — whether it’s flipping houses, renting, or listing on Airbnb. We built this platform to make property investing and financial awareness more accessible by providing data-driven insights for smarter, more profitable decisions.
